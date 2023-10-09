@@ -3,19 +3,13 @@ import clsx from "clsx";
 
 type Props = {
   type: "home" | "feed" | "works" | "blog";
-  size?: "small" | "medium" | "large";
-  color?: "black" | "white";
+  color?: "black" | "white" | "none";
 };
 
-export function Icon({ type, size = "medium", color = "none" }: Props) {
+export function Icon({ type, color = "none" }: Props) {
   return (
     <span
-      className={clsx(
-        styles.icon,
-        styles.type[type],
-        styles.size[size],
-        styles.color[color]
-      )}
+      className={clsx(styles.icon, styles.type[type], styles.color[color])}
     />
   );
 }

@@ -6,6 +6,8 @@ export const icon = style({
     display: "inline-block",
     mask: "no-repeat center",
     maskSize: "contain",
+    width: "1em",
+    height: "1em",
   },
 });
 
@@ -46,27 +48,6 @@ export const type = styleVariants({
   blog: {
     "::before": {
       maskImage: "url(./assets/blog.svg)",
-    },
-  },
-});
-
-export const size = styleVariants({
-  small: {
-    "::before": {
-      width: "24px",
-      height: "24px",
-    },
-  },
-  medium: {
-    "::before": {
-      width: "32px",
-      height: "32px",
-    },
-  },
-  large: {
-    "::before": {
-      width: "48px",
-      height: "48px",
     },
   },
 });

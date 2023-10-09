@@ -26,11 +26,29 @@ export const root = style([
   }),
 ]);
 
-export const link = style({
-  color: "inherit",
-  textDecoration: "none",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  fontSize: "10px",
-});
+export const link = style([
+  {
+    color: "inherit",
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    fontSize: "24px",
+  },
+  responsiveStyle({
+    md: {
+      fontSize: "32px",
+    },
+  }),
+]);
+
+export const lintText = style([
+  {
+    fontSize: "10px",
+  },
+  responsiveStyle({
+    md: {
+      display: "none", // hide text on desktop
+    },
+  }),
+]);
