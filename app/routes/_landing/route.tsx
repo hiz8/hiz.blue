@@ -10,7 +10,9 @@ export default function Index() {
     <div className={styles.root}>
       <AppBanner />
       <AppNav />
-      <Outlet />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
     </div>
   );
 }

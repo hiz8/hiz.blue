@@ -11,6 +11,7 @@ export const root = style({
   position: "fixed",
   bottom: 0,
   zIndex: 1,
+  gridArea: "nav",
 });
 
 export const link = style({
