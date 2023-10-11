@@ -1,4 +1,4 @@
-import { style, vars, responsiveStyle } from "~/styles.css";
+import { style, keyframes, vars, responsiveStyle } from "~/styles.css";
 
 export const root = style([
   {
@@ -31,3 +31,49 @@ export const headline = style([
     },
   }),
 ]);
+
+const cloudOneKeyframes = keyframes({
+  "0%": { top: 0, left: -100 },
+  "100%": { top: "-100%", left: 0 },
+});
+
+export const cloudOne = style({
+  backgroundImage:
+    "radial-gradient( white 1%, transparent 3%), radial-gradient( white 0%, transparent 3%)",
+  backgroundSize: "100px 100px",
+  backgroundPosition: "5% 100%, 10% 50%",
+  backgroundRepeat: "no-repeat",
+  position: "absolute",
+  left: 0,
+  top: 0,
+  height: "100%",
+  width: "100%",
+  animationName: cloudOneKeyframes,
+  animationDuration: "33s",
+  animationTimingFunction: "ease-in-out",
+  animationIterationCount: "infinite",
+  zIndex: 1,
+});
+
+const cloudTowKeyframes = keyframes({
+  "0%": { top: "100%", left: -100 },
+  "100%": { top: "-100%", left: 0 },
+});
+
+export const cloudTwo = style({
+  backgroundImage:
+    "radial-gradient( white 0%, transparent 3%), radial-gradient( white 0%, transparent 3%), radial-gradient( white 0%, transparent 3%), radial-gradient( white 1%, transparent 3%)",
+  backgroundSize: "100px 100px",
+  backgroundPosition: "0% 100%, 5% 50%, 10% 20%, 25% 95%",
+  backgroundRepeat: "no-repeat",
+  position: "absolute",
+  left: 0,
+  top: 0,
+  height: "100%",
+  width: "100%",
+  animationName: cloudTowKeyframes,
+  animationDuration: "20s",
+  animationTimingFunction: "linear",
+  animationIterationCount: "infinite",
+  zIndex: 1,
+});

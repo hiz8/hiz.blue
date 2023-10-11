@@ -11,6 +11,7 @@ export const root = style([
     "nav"
   `,
     height: "100vh",
+    overflow: "hidden",
   },
   responsiveStyle({
     md: {
