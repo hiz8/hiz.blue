@@ -21,7 +21,7 @@ export const root = style([
       position: "static",
       flexDirection: "column",
       justifyContent: "center",
-      gap: vars.space["6x"],
+      gap: vars.space["5x"],
     },
   }),
 ]);
@@ -32,8 +32,16 @@ export const link = style([
     textDecoration: "none",
     display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
     fontSize: "24px",
+    width: "44px",
+    height: "44px",
+    borderRadius: "14px",
+
+    ":hover": {
+      backgroundColor: "rgba( 255, 255, 255, 0.3)",
+    },
   },
   responsiveStyle({
     md: {
