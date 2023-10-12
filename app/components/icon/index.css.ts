@@ -1,6 +1,8 @@
 import { style, styleVariants, vars } from "~/styles.css";
 
 export const icon = style({
+  lineHeight: 0,
+
   "::before": {
     content: "''",
     display: "inline-block",
