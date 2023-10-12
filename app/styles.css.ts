@@ -1,4 +1,4 @@
-import { createGlobalTheme } from "@vanilla-extract/css";
+import { createGlobalTheme, type StyleRule } from "@vanilla-extract/css";
 
 export const vars = createGlobalTheme(":root", {
   color: {
@@ -32,28 +32,47 @@ export const vars = createGlobalTheme(":root", {
   },
 });
 
-export const breakpointNames = ["sm", "md", "lg", "xl"] as const;
-
-export const breakpoints = {
+const breakpoints = {
   sm: 600,
   md: 840,
   lg: 1280,
   xl: 1920,
 } as const;
 
+type Breakpoint = keyof typeof breakpoints;
+type CSSProps = Omit<StyleRule, "@media" | "@supports">;
 type ResponsiveStyle = {
-  sm?: any;
-  md?: any;
-  lg?: any;
-  xl?: any;
+  sm?: CSSProps;
+  md?: CSSProps;
+  lg?: CSSProps;
+  xl?: CSSProps;
 };
 
-export const responsiveStyle = ({ sm, md, lg, xl }: ResponsiveStyle) => ({
+const makeMediaQuery = (breakpoint: Breakpoint) => (styles?: CSSProps) =>
+  !styles || Object.keys(styles).length === 0
+    ? {}
+    : {
+        [`screen and (min-width: ${breakpoints[breakpoint]}px)`]: styles,
+      };
+
+const mediaQuery = {
+  sm: makeMediaQuery("sm"),
+  md: makeMediaQuery("md"),
+  lg: makeMediaQuery("lg"),
+  xl: makeMediaQuery("xl"),
+};
+
+export const responsiveStyle = ({
+  sm,
+  md,
+  lg,
+  xl,
+}: ResponsiveStyle): StyleRule => ({
   "@media": {
-    [`screen and (min-width: ${breakpoints.sm}px)`]: sm ?? {}, // Hnadset
-    [`screen and (min-width: ${breakpoints.md}px)`]: md ?? {}, // Small tablet
-    [`screen and (min-width: ${breakpoints.lg}px)`]: lg ?? {}, // Large tablet
-    [`screen and (min-width: ${breakpoints.xl}px)`]: xl ?? {},
+    ...mediaQuery.sm(sm ?? {}), // Hnadset
+    ...mediaQuery.md(md ?? {}), // Small tablet
+    ...mediaQuery.lg(lg ?? {}), // Large tablet
+    ...mediaQuery.xl(xl ?? {}),
   },
 });
 
