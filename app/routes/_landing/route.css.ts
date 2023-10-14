@@ -26,4 +26,6 @@ export const root = style([
 
 export const main = style({
   gridArea: "main",
+  display: "grid",
+  gridTemplateRows: "1fr auto",
 });
