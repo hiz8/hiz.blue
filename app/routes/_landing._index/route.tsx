@@ -1,6 +1,7 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
 import { Link } from "@remix-run/react";
 
+import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
 
 import * as styles from "./route.css";
@@ -30,10 +31,10 @@ export default function Index() {
   return (
     <div className={styles.root}>
       <section>
-        <h1 className={styles.headline}>
+        <Headline>
           <Icon type="feed" />
           Feed
-        </h1>
+        </Headline>
         <ul className={styles.feedItems}>
           {feedItems.map((item) => (
             <Link to={item.href} key={item.id} className={styles.feedItemLink}>
