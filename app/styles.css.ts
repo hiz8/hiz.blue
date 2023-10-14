@@ -29,6 +29,8 @@ export const vars = createGlobalTheme(":root", {
     "6x": "24px",
     "7x": "28px",
     "8x": "32px",
+    "9x": "36px",
+    "10x": "40px",
   },
 });
 
