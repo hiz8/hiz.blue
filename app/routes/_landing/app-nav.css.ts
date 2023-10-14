@@ -38,9 +38,15 @@ export const link = style([
     width: "44px",
     height: "44px",
     borderRadius: "14px",
+    outline: "none",
 
-    ":hover": {
-      backgroundColor: "rgba( 255, 255, 255, 0.3)",
+    selectors: {
+      "&[data-hovered='true']": {
+        backgroundColor: "rgba( 255, 255, 255, 0.3)",
+      },
+      "&[data-focus-visible='true']": {
+        backgroundColor: "rgba( 255, 255, 255, 0.3)",
+      },
     },
   },
   responsiveStyle({
