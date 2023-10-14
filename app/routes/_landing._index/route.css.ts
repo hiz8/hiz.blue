@@ -1,24 +1,32 @@
-import { style, vars } from "~/styles.css";
+import { style, vars, responsiveStyle } from "~/styles.css";
 
 export const root = style({
   position: "relative",
 });
 
-export const headline = style({
-  fontSize: "24px",
-  fontWeight: 500,
-  display: "flex",
-  alignItems: "center",
-  gap: vars.space["1x"],
-  width: `calc(100% - ${vars.space["8x"]})`,
-  margin: `${vars.space["4x"]} auto`,
-});
+export const headline = style([
+  {
+    fontSize: "24px",
+    fontWeight: 500,
+    display: "flex",
+    alignItems: "center",
+    gap: vars.space["1x"],
+    margin: `0 auto ${vars.space["4x"]}`,
+    boxSizing: "border-box",
+  },
+  responsiveStyle({
+    md: {
+      width: "100%",
+      margin: `0 auto ${vars.space["6x"]}`,
+    },
+  }),
+]);
 
 export const feedItems = style({
   display: "flex",
   flexDirection: "column",
   gap: vars.space["4x"],
-  padding: `0 ${vars.space["4x"]}`,
+  padding: "0",
 });
 
 export const feedItem = style({

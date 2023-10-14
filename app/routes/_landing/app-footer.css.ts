@@ -1,18 +1,11 @@
-import { style, vars, responsiveStyle } from "~/styles.css";
+import { style, vars } from "~/styles.css";
 
 export const root = style({
   margin: "0 auto",
-  width: `calc(100% - ${vars.space["8x"]})`,
+  width: "100%",
 });
 
-export const copyright = style([
-  {
-    fontSize: "12px",
-    color: vars.color.text.gray,
-  },
-  responsiveStyle({
-    md: {
-      textAlign: "right",
-    },
-  }),
-]);
+export const copyright = style({
+  fontSize: "12px",
+  color: vars.color.text.gray,
+});

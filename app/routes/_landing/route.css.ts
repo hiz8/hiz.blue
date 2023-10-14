@@ -24,8 +24,14 @@ export const root = style([
   }),
 ]);
 
-export const main = style({
-  gridArea: "main",
-  display: "grid",
-  gridTemplateRows: "1fr auto",
-});
+export const main = style([
+  {
+    gridArea: "main",
+    display: "grid",
+    gridTemplateRows: "1fr auto",
+    padding: "16px 16px 0",
+  },
+  responsiveStyle({
+    md: { padding: "40px 40px 0" },
+  }),
+]);
