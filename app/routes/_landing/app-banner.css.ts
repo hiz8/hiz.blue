@@ -11,6 +11,7 @@ export const root = style([
     height: 60,
     width: "100%",
     gridArea: "banner",
+    position: "relative",
   },
   responsiveStyle({
     md: {
@@ -33,8 +34,8 @@ export const headline = style([
 ]);
 
 const cloudOneKeyframes = keyframes({
-  "0%": { top: 0, left: -100 },
-  "100%": { top: "-100%", left: 0 },
+  "0%": { top: 0, left: 0 },
+  "100%": { top: "-100%", left: 100 },
 });
 
 export const cloudOne = style({
@@ -52,12 +53,11 @@ export const cloudOne = style({
   animationDuration: "33s",
   animationTimingFunction: "ease-in-out",
   animationIterationCount: "infinite",
-  zIndex: 1,
 });
 
 const cloudTowKeyframes = keyframes({
-  "0%": { top: "100%", left: -100 },
-  "100%": { top: "-100%", left: 0 },
+  "0%": { top: "100%", left: 0 },
+  "100%": { top: "-100%", left: 100 },
 });
 
 export const cloudTwo = style({
@@ -75,5 +75,4 @@ export const cloudTwo = style({
   animationDuration: "20s",
   animationTimingFunction: "linear",
   animationIterationCount: "infinite",
-  zIndex: 1,
 });
