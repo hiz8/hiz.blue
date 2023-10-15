@@ -2,7 +2,7 @@ import * as styles from "./index.css";
 import clsx from "clsx";
 
 type Props = {
-  type: "home" | "feed" | "works" | "blog";
+  type: "home" | "feed" | "works" | "blog" | "externalLink";
   color?: "black" | "white" | "none";
 };
 

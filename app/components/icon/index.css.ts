@@ -52,4 +52,9 @@ export const type = styleVariants({
       maskImage: "url(./assets/blog.svg)",
     },
   },
+  externalLink: {
+    "::before": {
+      maskImage: "url(./assets/external-link.svg)",
+    },
+  },
 });
