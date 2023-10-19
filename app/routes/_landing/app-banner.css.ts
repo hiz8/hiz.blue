@@ -6,17 +6,22 @@ export const root = style([
       "url(/images/patterns_01.png) top -250px right 0 no-repeat, linear-gradient(180deg, #7E94CE 0%, #13D5E7 48.96%, #13D5E7 81.25%, #F0F7D8 100%)",
     color: vars.color.text.white,
     display: "flex",
-    justifyContent: "space-around",
     alignItems: "center",
+    gap: vars.space["4x"],
     height: 60,
     width: "100%",
     gridArea: "banner",
     position: "relative",
+    paddingInline: vars.space["5x"],
+    boxSizing: "border-box",
   },
   responsiveStyle({
     md: {
       height: "100%",
       backgroundPosition: "bottom 0 left -150px",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
     },
   }),
 ]);
@@ -29,6 +34,19 @@ export const headline = style([
   responsiveStyle({
     md: {
       fontSize: 32,
+    },
+  }),
+]);
+
+export const subHeadline = style([
+  {
+    margin: 0,
+    textAlign: "center",
+    fontSize: 12,
+  },
+  responsiveStyle({
+    md: {
+      fontSize: 16,
     },
   }),
 ]);
