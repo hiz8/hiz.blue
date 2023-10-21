@@ -14,14 +14,19 @@ export const root = style([
     position: "relative",
     paddingInline: vars.space["5x"],
     boxSizing: "border-box",
+    overflow: "hidden",
   },
   responsiveStyle({
     md: {
+      width: "230px",
       height: "100%",
       backgroundPosition: "bottom 0 left -150px",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      position: "fixed",
+      top: 0,
+      left: 60,
     },
   }),
 ]);
