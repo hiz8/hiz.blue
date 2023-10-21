@@ -1,4 +1,4 @@
-import { style, responsiveStyle } from "~/styles.css";
+import { style, vars, responsiveStyle } from "~/styles.css";
 
 export const root = style([
   {
@@ -29,9 +29,9 @@ export const main = style([
     gridArea: "main",
     display: "grid",
     gridTemplateRows: "1fr auto",
-    padding: "16px 16px 0",
+    padding: `${vars.space["5x"]} ${vars.space["4x"]} 0`,
   },
   responsiveStyle({
-    md: { padding: "40px 40px 0" },
+    md: { padding: `${vars.space["10x"]} ${vars.space["10x"]} 0` },
   }),
 ]);

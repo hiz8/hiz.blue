@@ -30,6 +30,7 @@ export const headline = style([
   {
     fontWeight: 500,
     margin: 0,
+    zIndex: 1,
   },
   responsiveStyle({
     md: {
@@ -43,6 +44,7 @@ export const subHeadline = style([
     margin: 0,
     textAlign: "center",
     fontSize: 12,
+    zIndex: 1,
   },
   responsiveStyle({
     md: {
