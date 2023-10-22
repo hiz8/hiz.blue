@@ -19,7 +19,6 @@ export const imageWrapper = style([
     borderRadius: "14px",
     overflow: "hidden",
     boxSizing: "border-box",
-    border: `1px solid ${vars.color.component.border}`,
 
     ":empty": {
       backgroundColor: vars.color.component.border,
@@ -46,7 +45,7 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: "18px",
+  fontSize: "24px",
 });
 
 export const description = style({
