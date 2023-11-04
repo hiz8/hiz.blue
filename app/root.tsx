@@ -7,23 +7,32 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useNavigate,
 } from "@remix-run/react";
+import { RouterProvider } from "react-aria-components";
+
+import * as styles from "./root.css";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: cssBundleHref! },
 ];
 
 export default function App() {
+  const navigate = useNavigate();
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <Meta />
         <Links />
       </head>
-      <body>
-        <Outlet />
+      <body className={styles.root}>
+        <RouterProvider navigate={navigate}>
+          <Outlet />
+        </RouterProvider>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
