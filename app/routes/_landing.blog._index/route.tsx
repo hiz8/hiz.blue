@@ -1,5 +1,5 @@
 import { type MetaFunction, json } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+// import { useLoaderData } from "@remix-run/react";
 
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
@@ -19,7 +19,8 @@ export async function loader() {
 }
 
 export default function Index() {
-  const posts = useLoaderData<typeof loader>();
+  // const posts = useLoaderData<typeof loader>();
+  const posts = [] as ReturnType<typeof postFromModule>[];
 
   return (
     <div>
@@ -28,6 +29,9 @@ export default function Index() {
         Blog
       </Headline>
       <div className={styles.cardHolder}>
+        {posts.length === 0 && (
+          <p className={styles.feedItemsEmpty}>No posts yet.</p>
+        )}
         {posts.map((post) => (
           <Card key={post.slug} {...post} />
         ))}

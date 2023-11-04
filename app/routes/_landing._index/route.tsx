@@ -26,15 +26,17 @@ type FieldItem = {
 };
 
 export default function Index() {
-  const posts = useLoaderData<typeof loader>();
+  // const posts = useLoaderData<typeof loader>();
 
-  const feedItems: FieldItem[] = posts.map((post) => ({
-    id: post.slug,
-    title: post.title,
-    domain: "hiz.blue",
-    category: "Blog",
-    href: `/blog/${post.slug}`,
-  }));
+  // const feedItems: FieldItem[] = posts.map((post) => ({
+  //   id: post.slug,
+  //   title: post.title,
+  //   domain: "hiz.blue",
+  //   category: "Blog",
+  //   href: `/blog/${post.slug}`,
+  // }));
+
+  const feedItems: FieldItem[] = [];
 
   return (
     <div className={styles.root}>
@@ -43,6 +45,9 @@ export default function Index() {
           <Icon type="feed" />
           Feed
         </Headline>
+        {feedItems.length === 0 && (
+          <p className={styles.feedItemsEmpty}>No feed items yet.</p>
+        )}
         <ul className={styles.feedItems}>
           {feedItems.map((item) => (
             <Link to={item.href} key={item.id} className={styles.feedItemLink}>

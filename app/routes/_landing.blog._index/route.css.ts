@@ -5,3 +5,10 @@ export const cardHolder = style({
   flexDirection: "column",
   gap: vars.space["6x"],
 });
+
+export const feedItemsEmpty = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  color: vars.color.text.gray,
+});

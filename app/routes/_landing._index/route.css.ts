@@ -4,6 +4,13 @@ export const root = style({
   position: "relative",
 });
 
+export const feedItemsEmpty = style({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-start",
+  color: vars.color.text.gray,
+});
+
 export const feedItems = style({
   display: "flex",
   flexDirection: "column",
