@@ -1,4 +1,6 @@
 /favicon.ico
   Cache-Control: public, max-age=3600, s-maxage=3600
+/fonts/Inter.woff2
+  Cache-Control: public, max-age=604800, s-maxage=604800
 /build/*
   Cache-Control: public, max-age=31536000, immutable
