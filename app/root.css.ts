@@ -2,7 +2,7 @@ import { vars, style, globalFontFace, globalStyle } from "~/styles.css";
 
 globalFontFace("inter", {
   src: "url(/fonts/Inter.woff2)",
-  fontDisplay: "swap",
+  fontDisplay: "block",
 });
 
 globalStyle("html", {
