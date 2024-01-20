@@ -1,20 +1,25 @@
-import { type MetaFunction, json } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import type { MetaFunction, LoaderArgs } from "@remix-run/cloudflare";
 import { Link, useLoaderData } from "@remix-run/react";
 
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
-import { postFromModule } from "~/utils/post-from-module";
-import * as styles from "./route.css";
+import { Client } from "~/utils/notion";
+import { postFromNotionResponse } from "~/utils/post-from-notion";
 
-// All Blog posts
-import * as post001 from "../_landing.blog._detail.20231022.mdx";
+import * as styles from "./route.css";
 
 export const meta: MetaFunction = () => {
   return [{ title: "hiz" }, { name: "description", content: "Home" }];
 };
 
-export async function loader() {
-  return json([postFromModule(post001)]);
+export async function loader({ context }: LoaderArgs) {
+  const client = new Client(context.env.NOTION_API_KEY);
+
+  const data = await client.getDatabase(context.env.NOTION_DATABASE_ID);
+  const posts = data.map(postFromNotionResponse);
+
+  return json({ posts });
 }
 
 type FieldItem = {
@@ -26,17 +31,15 @@ type FieldItem = {
 };
 
 export default function Index() {
-  // const posts = useLoaderData<typeof loader>();
+  const { posts } = useLoaderData<typeof loader>();
 
-  // const feedItems: FieldItem[] = posts.map((post) => ({
-  //   id: post.slug,
-  //   title: post.title,
-  //   domain: "hiz.blue",
-  //   category: "Blog",
-  //   href: `/blog/${post.slug}`,
-  // }));
-
-  const feedItems: FieldItem[] = [];
+  const feedItems: FieldItem[] = posts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    domain: "hiz.blue",
+    category: "Blog",
+    href: `/blog/${post.slug}`,
+  }));
 
   return (
     <div className={styles.root}>

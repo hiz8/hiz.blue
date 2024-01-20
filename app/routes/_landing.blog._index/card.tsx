@@ -6,9 +6,9 @@ const imageSize = 44;
 
 interface CardProps {
   title: string;
-  excerpt: string;
   date: string;
   slug: string;
+  excerpt?: string;
   image?: string;
 }
 export function Card({ title, excerpt, date, slug, image }: CardProps) {
@@ -28,7 +28,7 @@ export function Card({ title, excerpt, date, slug, image }: CardProps) {
         </div>
         <div className={styles.content}>
           <div className={styles.title}>{title}</div>
-          <div className={styles.excerpt}>{excerpt}</div>
+          {excerpt && <div className={styles.excerpt}>{excerpt}</div>}
         </div>
       </div>
     </Link>
