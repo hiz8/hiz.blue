@@ -32,8 +32,8 @@ export function postFromNotionResponse(data: NotionResponse): Post {
     throw new Error("Invalid data");
   }
 
-  const title = getProperty(data, "title");
-  const slug = getProperty(data, "slug");
+  const title = getProperty(data, "Page");
+  const slug = getProperty(data, "Slug");
   const date = data.created_time;
 
   return {

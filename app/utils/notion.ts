@@ -12,6 +12,12 @@ export class Client {
   async getDatabase(databaseId: string) {
     const response = await this.notion.databases.query({
       database_id: databaseId,
+      filter: {
+        property: "Published",
+        checkbox: {
+          equals: true,
+        },
+      },
     });
     return response.results;
   }
@@ -20,10 +26,20 @@ export class Client {
     const response = await this.notion.databases.query({
       database_id: databaseId,
       filter: {
-        property: "slug",
-        rich_text: {
-          equals: slug,
-        },
+        and: [
+          {
+            property: "Slug",
+            rich_text: {
+              equals: slug,
+            },
+          },
+          {
+            property: "Published",
+            checkbox: {
+              equals: true,
+            },
+          },
+        ],
       },
     });
 
