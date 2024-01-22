@@ -1,4 +1,10 @@
 import { Client as NotionClient } from "@notionhq/client";
+import type {
+  PartialBlockObjectResponse,
+  BlockObjectResponse,
+} from "@notionhq/client/build/src/api-endpoints";
+
+export type Blocks = (PartialBlockObjectResponse | BlockObjectResponse)[];
 
 export class Client {
   private notion: NotionClient;

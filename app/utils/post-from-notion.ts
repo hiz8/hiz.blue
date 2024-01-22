@@ -2,7 +2,7 @@ import { isFullDatabase, isFullPage } from "@notionhq/client";
 
 type NotionResponse = Parameters<typeof isFullDatabase>[0];
 
-type Post = {
+export type Post = {
   id: string;
   title: string;
   date: string;
