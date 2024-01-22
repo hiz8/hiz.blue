@@ -42,10 +42,17 @@ export async function loader({ params, context }: LoaderArgs) {
 export default function Index() {
   const { post, blocks } = useLoaderData<typeof loader>();
 
+  // post.date の "YYYY-MM-DDTHH:mm:ssZ" の文字列 を YYYY-MM-DD に変換する
+  const _date = post.date.slice(0, 10);
+
   return (
     <article className={styles.root}>
-      <h1>{post.title}</h1>
-      <p>{post.date}</p>
+      <header className={styles.header}>
+        <h1 className={styles.title}>{post.title}</h1>
+        <time className={styles.date} dateTime={_date}>
+          {_date}
+        </time>
+      </header>
       <Render blocks={blocks as any} />
     </article>
   );

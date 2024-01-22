@@ -19,3 +19,16 @@ globalStyle(`${root} h2, ${root} h3, ${root} h4, ${root} h5, ${root} h6`, {
 globalStyle(`${root} p`, {
   whiteSpace: "pre-wrap",
 });
+
+export const header = style({
+  display: "flex",
+  flexDirection: "column-reverse",
+});
+
+export const title = style({
+  margin: 0,
+});
+
+export const date = style({
+  color: vars.color.text.gray,
+});
