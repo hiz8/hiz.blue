@@ -11,6 +11,7 @@ declare module "@remix-run/cloudflare" {
       NOTION_API_KEY: string;
       NOTION_DATABASE_ID: string;
     };
+    waitUntil: (promise: Promise<unknown>) => void;
   }
 
   export interface DataFunctionArgs
