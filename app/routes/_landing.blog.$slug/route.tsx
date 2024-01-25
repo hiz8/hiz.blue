@@ -39,7 +39,7 @@ export async function loader({ params, context, request }: LoaderArgs) {
   const client = new Client(context.env.NOTION_API_KEY);
   const data = await client.getDatabaseBySlug(
     context.env.NOTION_DATABASE_ID,
-    slug
+    slug,
   );
 
   const post = postFromNotionResponse(data);

@@ -13,7 +13,7 @@ export class Cache<T> {
     const cacheURL = new URL(request.url);
 
     this.cacheRequest = new Request(
-      cacheURL.toString()
+      cacheURL.toString(),
     ) as unknown as CFRequest;
   }
 

@@ -14,8 +14,9 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   remixContext: EntryContext,
-  loadContext: AppLoadContext
+  loadContext: AppLoadContext,
 ) {
+  let _responseStatusCode = responseStatusCode;
   const body = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,
     {
@@ -23,9 +24,9 @@ export default async function handleRequest(
       onError(error: unknown) {
         // Log streaming rendering errors from inside the shell
         console.error(error);
-        responseStatusCode = 500;
+        _responseStatusCode = 500;
       },
-    }
+    },
   );
 
   if (isbot(request.headers.get("user-agent"))) {
@@ -35,6 +36,6 @@ export default async function handleRequest(
   responseHeaders.set("Content-Type", "text/html");
   return new Response(body, {
     headers: responseHeaders,
-    status: responseStatusCode,
+    status: _responseStatusCode,
   });
 }
