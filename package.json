@@ -7,7 +7,9 @@
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "lint": "biome lint ./app",
+    "fmt": "biome format --write ./app"
   },
   "dependencies": {
     "@9gustin/react-notion-render": "^3.11.3",
