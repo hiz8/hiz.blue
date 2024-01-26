@@ -33,11 +33,6 @@ export const imageWrapper = style([
   }),
 ]);
 
-export const image = style({
-  width: "100%",
-  height: "100%",
-});
-
 export const content = style({
   flex: 1,
   display: "flex",
