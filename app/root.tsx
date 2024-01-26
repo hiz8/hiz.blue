@@ -13,9 +13,11 @@ import { RouterProvider } from "react-aria-components";
 
 import * as styles from "./root.css";
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: cssBundleHref! },
-];
+export const links: LinksFunction = () => {
+  if (!cssBundleHref) throw new Error("Missing css bundle");
+
+  return [{ rel: "stylesheet", href: cssBundleHref }];
+};
 
 export default function App() {
   const navigate = useNavigate();

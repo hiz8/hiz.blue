@@ -68,7 +68,7 @@ export default function Index() {
           {feedItems.map((item) => (
             <Link to={item.href} key={item.id} className={styles.feedItemLink}>
               <li className={styles.feedItem}>
-                <div className={styles.feedItemImage}></div>
+                <div className={styles.feedItemImage} />
                 <div className={styles.feedItemContents}>
                   <h2 className={styles.feedItemTitle}>{item.title}</h2>
                   <div className={styles.feedItemMeta}>

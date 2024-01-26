@@ -63,6 +63,7 @@ export default function Index() {
           {_date}
         </time>
       </header>
+      {/* biome-ignore lint/suspicious/noExplicitAny: <explanation> */}
       <Render blocks={blocks as any} />
     </article>
   );
