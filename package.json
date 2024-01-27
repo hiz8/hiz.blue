@@ -7,9 +7,13 @@
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "lint": "biome lint ./app",
+    "fmt": "biome format --write ./app"
   },
   "dependencies": {
+    "@9gustin/react-notion-render": "^3.11.3",
+    "@notionhq/client": "^2.2.14",
     "@remix-run/cloudflare": "^2.5.1",
     "@remix-run/cloudflare-pages": "^2.5.1",
     "@remix-run/css-bundle": "^2.5.1",
@@ -20,15 +24,14 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@cloudflare/workers-types": "^4.20231218.0",
     "@remix-run/dev": "^2.5.1",
-    "@remix-run/eslint-config": "^2.5.1",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
     "@vanilla-extract/css": "^1.14.0",
-    "eslint": "^8.56.0",
     "typescript": "^5.3.3",
-    "wrangler": "^3.23.0"
+    "wrangler": "^3.24.0"
   },
   "engines": {
     "node": ">=18.0.0"

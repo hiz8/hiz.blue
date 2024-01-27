@@ -32,6 +32,28 @@ export const vars = createGlobalTheme(":root", {
     "9x": "36px",
     "10x": "40px",
   },
+  font: {
+    family: {
+      sans: "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
+      systemUI: "system-ui",
+    },
+    size: {
+      "1x": "12px",
+      "2x": "14px",
+      "3x": "16px",
+      "4x": "18px",
+      "5x": "20px",
+      "6x": "22px",
+      "7x": "24px",
+      "8x": "28px",
+      "9x": "32px",
+      "10x": "36px",
+    },
+    weight: {
+      normal: "400",
+      bold: "700",
+    },
+  },
 });
 
 const breakpoints = {

@@ -33,11 +33,6 @@ export const imageWrapper = style([
   }),
 ]);
 
-export const image = style({
-  width: "100%",
-  height: "100%",
-});
-
 export const content = style({
   flex: 1,
   display: "flex",
@@ -46,17 +41,27 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: "24px",
+  fontFamily: vars.font.family.systemUI,
+  fontSize: vars.font.size["6x"],
+  fontWeight: 400,
+  margin: 0,
+});
+
+export const date = style({
+  color: vars.color.text.gray,
 });
 
 export const excerpt = style({
-  fontSize: "14px",
+  fontFamily: vars.font.family.systemUI,
+  fontSize: vars.font.size["2x"],
+  color: vars.color.text.gray,
+  margin: 0,
 });
 
 export const url = style({});
 
 export const urlLink = style({
-  fontSize: "14px",
+  fontSize: vars.font.size["2x"],
   color: vars.color.text.black,
   textDecoration: "none",
   display: "block",

@@ -15,6 +15,7 @@ export function Tooltip({ children, ...props }: TooltipProps) {
     <BaseTooltip {...props} className={styles.root}>
       <OverlayArrow>
         <svg width={8} height={8}>
+          <title>Arrow</title>
           <path d="M0 0,L4 4,L8 0" />
         </svg>
       </OverlayArrow>

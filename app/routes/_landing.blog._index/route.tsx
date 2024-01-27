@@ -1,26 +1,44 @@
-import { type MetaFunction, json } from "@remix-run/cloudflare";
-// import { useLoaderData } from "@remix-run/react";
+import {
+  type MetaFunction,
+  type LoaderArgs,
+  json,
+} from "@remix-run/cloudflare";
+import { useLoaderData } from "@remix-run/react";
 
+import { Client } from "~/utils/notion";
+import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
+import { Cache } from "~/utils/cache";
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
 import { Card } from "./card";
-import { postFromModule } from "~/utils/post-from-module";
 import * as styles from "./route.css";
 
-// All posts
-import * as post001 from "../_landing.blog._detail.20231022.mdx";
+type Data = {
+  posts: Post[];
+};
 
 export const meta: MetaFunction = () => {
   return [{ title: "Blog - hiz" }, { name: "description", content: "Blog" }];
 };
 
-export async function loader() {
-  return json([postFromModule(post001)]);
+export async function loader({ context, request }: LoaderArgs) {
+  const cache = new Cache<Data>(request);
+  const cacheMatch = await cache.get();
+
+  if (cacheMatch) {
+    return cacheMatch;
+  }
+
+  const client = new Client(context.env.NOTION_API_KEY);
+  const data = await client.getDatabase(context.env.NOTION_DATABASE_ID);
+  const posts = data.map(postFromNotionResponse);
+  context.waitUntil(cache.set({ posts }));
+
+  return json({ posts });
 }
 
 export default function Index() {
-  // const posts = useLoaderData<typeof loader>();
-  const posts = [] as ReturnType<typeof postFromModule>[];
+  const { posts } = useLoaderData<typeof loader>();
 
   return (
     <div>
@@ -33,7 +51,7 @@ export default function Index() {
           <p className={styles.feedItemsEmpty}>No posts yet.</p>
         )}
         {posts.map((post) => (
-          <Card key={post.slug} {...post} />
+          <Card key={post.id} {...post} />
         ))}
       </div>
     </div>

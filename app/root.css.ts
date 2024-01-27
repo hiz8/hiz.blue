@@ -11,7 +11,7 @@ globalStyle("html", {
 
 export const root = style({
   margin: 0,
-  fontFamily: "inter",
+  fontFamily: vars.font.family.sans,
   backgroundColor: vars.color.background.white,
   color: vars.color.text.black,
 });

@@ -1,20 +1,38 @@
-import { type MetaFunction, json } from "@remix-run/cloudflare";
+import { json } from "@remix-run/cloudflare";
+import type { MetaFunction, LoaderArgs } from "@remix-run/cloudflare";
 import { Link, useLoaderData } from "@remix-run/react";
 
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
-import { postFromModule } from "~/utils/post-from-module";
+import { Client } from "~/utils/notion";
+import { postFromNotionResponse } from "~/utils/post-from-notion";
+import { Cache } from "~/utils/cache";
+
 import * as styles from "./route.css";
 
-// All Blog posts
-import * as post001 from "../_landing.blog._detail.20231022.mdx";
+type Data = {
+  posts: ReturnType<typeof postFromNotionResponse>[];
+};
 
 export const meta: MetaFunction = () => {
   return [{ title: "hiz" }, { name: "description", content: "Home" }];
 };
 
-export async function loader() {
-  return json([postFromModule(post001)]);
+export async function loader({ context, request }: LoaderArgs) {
+  const cache = new Cache<Data>(request);
+  const cacheMatch = await cache.get();
+
+  if (cacheMatch) {
+    return cacheMatch;
+  }
+
+  const client = new Client(context.env.NOTION_API_KEY);
+
+  const data = await client.getDatabase(context.env.NOTION_DATABASE_ID);
+  const posts = data.map(postFromNotionResponse);
+  context.waitUntil(cache.set({ posts }));
+
+  return json({ posts });
 }
 
 type FieldItem = {
@@ -26,17 +44,15 @@ type FieldItem = {
 };
 
 export default function Index() {
-  // const posts = useLoaderData<typeof loader>();
+  const { posts } = useLoaderData<typeof loader>();
 
-  // const feedItems: FieldItem[] = posts.map((post) => ({
-  //   id: post.slug,
-  //   title: post.title,
-  //   domain: "hiz.blue",
-  //   category: "Blog",
-  //   href: `/blog/${post.slug}`,
-  // }));
-
-  const feedItems: FieldItem[] = [];
+  const feedItems: FieldItem[] = posts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    domain: "hiz.blue",
+    category: "Blog",
+    href: `/blog/${post.slug}`,
+  }));
 
   return (
     <div className={styles.root}>
@@ -52,7 +68,7 @@ export default function Index() {
           {feedItems.map((item) => (
             <Link to={item.href} key={item.id} className={styles.feedItemLink}>
               <li className={styles.feedItem}>
-                <div className={styles.feedItemImage}></div>
+                <div className={styles.feedItemImage} />
                 <div className={styles.feedItemContents}>
                   <h2 className={styles.feedItemTitle}>{item.title}</h2>
                   <div className={styles.feedItemMeta}>

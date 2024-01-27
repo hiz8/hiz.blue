@@ -21,7 +21,7 @@ export const feedItems = style({
 export const feedItem = style({
   display: "flex",
   gap: vars.space["3x"],
-  height: "45px",
+  minHeight: "45px",
 });
 
 export const feedItemLink = style({
@@ -40,7 +40,7 @@ export const feedItemImage = style({
 });
 
 export const feedItemContents = style({
-  height: "45px",
+  minHeight: "45px",
   flex: 1,
   display: "flex",
   flexDirection: "column",
@@ -48,8 +48,10 @@ export const feedItemContents = style({
 });
 
 export const feedItemTitle = style({
-  fontSize: "24px",
+  fontFamily: vars.font.family.systemUI,
+  fontSize: vars.font.size["6x"],
   fontWeight: 400,
+  lineHeight: 1.2,
   margin: 0,
 });
 
@@ -59,13 +61,13 @@ export const feedItemMeta = style({
 });
 
 export const feedItemDomain = style({
-  fontSize: "12px",
+  fontSize: vars.font.size["1x"],
   margin: 0,
   color: vars.color.text.gray,
 });
 
 export const feedItemCategory = style({
-  fontSize: "12px",
+  fontSize: vars.font.size["1x"],
   color: vars.color.text.black,
   margin: 0,
   padding: "0.125em 0.5em",
