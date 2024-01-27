@@ -6,6 +6,6 @@ export const root = style({
 });
 
 export const copyright = style({
-  fontSize: "12px",
+  fontSize: vars.font.size["1x"],
   color: vars.color.text.gray,
 });

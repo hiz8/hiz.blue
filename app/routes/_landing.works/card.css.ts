@@ -45,18 +45,18 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: "22px",
+  fontSize: vars.font.size["6x"],
 });
 
 export const description = style({
-  fontSize: "14px",
+  fontSize: vars.font.size["2x"],
   color: vars.color.text.gray,
 });
 
 export const url = style({});
 
 export const urlLink = style({
-  fontSize: "14px",
+  fontSize: vars.font.size["2x"],
   color: vars.color.text.black,
 
   ":any-link": {
