@@ -45,7 +45,7 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: "24px",
+  fontSize: "22px",
 });
 
 export const description = style({

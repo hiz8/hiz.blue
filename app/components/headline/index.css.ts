@@ -2,7 +2,7 @@ import { style, vars, responsiveStyle } from "~/styles.css";
 
 export const headline = style([
   {
-    fontSize: "24px",
+    fontSize: "22px",
     fontWeight: 500,
     display: "flex",
     alignItems: "center",

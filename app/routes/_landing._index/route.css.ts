@@ -21,7 +21,7 @@ export const feedItems = style({
 export const feedItem = style({
   display: "flex",
   gap: vars.space["3x"],
-  height: "45px",
+  minHeight: "45px",
 });
 
 export const feedItemLink = style({
@@ -40,7 +40,7 @@ export const feedItemImage = style({
 });
 
 export const feedItemContents = style({
-  height: "45px",
+  minHeight: "45px",
   flex: 1,
   display: "flex",
   flexDirection: "column",
@@ -48,8 +48,9 @@ export const feedItemContents = style({
 });
 
 export const feedItemTitle = style({
-  fontSize: "24px",
+  fontSize: "22px",
   fontWeight: 400,
+  lineHeight: 1.2,
   margin: 0,
 });
 
