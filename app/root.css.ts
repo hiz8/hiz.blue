@@ -11,8 +11,7 @@ globalStyle("html", {
 
 export const root = style({
   margin: 0,
-  fontFamily:
-    "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
+  fontFamily: vars.font.family.sans,
   backgroundColor: vars.color.background.white,
   color: vars.color.text.black,
 });

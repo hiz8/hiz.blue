@@ -48,6 +48,7 @@ export const feedItemContents = style({
 });
 
 export const feedItemTitle = style({
+  fontFamily: vars.font.family.systemUI,
   fontSize: "22px",
   fontWeight: 400,
   lineHeight: 1.2,

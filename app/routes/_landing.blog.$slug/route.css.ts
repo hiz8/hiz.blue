@@ -6,17 +6,20 @@ export const root = style({
 });
 
 globalStyle(`${root} h1`, {
+  fontFamily: vars.font.family.systemUI,
   fontSize: 24,
   fontWeight: 500,
 });
 
 globalStyle(`${root} h2, ${root} h3, ${root} h4, ${root} h5, ${root} h6`, {
+  fontFamily: vars.font.family.systemUI,
   fontSize: 24,
   fontWeight: 500,
   marginBlock: vars.space["2x"],
 });
 
 globalStyle(`${root} p`, {
+  fontFamily: vars.font.family.systemUI,
   whiteSpace: "pre-wrap",
 });
 
