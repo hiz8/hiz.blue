@@ -34,6 +34,7 @@ export function postFromNotionResponse(data: NotionResponse): Post {
 
   const title = getProperty(data, "Page");
   const slug = getProperty(data, "Slug");
+  const excerpt = getProperty(data, "Excerpt");
   const date = data.created_time;
 
   return {
@@ -41,5 +42,6 @@ export function postFromNotionResponse(data: NotionResponse): Post {
     title,
     date,
     slug,
+    excerpt,
   };
 }

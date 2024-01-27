@@ -23,12 +23,27 @@ globalStyle(`${root} p`, {
 export const header = style({
   display: "flex",
   flexDirection: "column-reverse",
+  gap: vars.space["1x"],
+  marginBlockEnd: vars.space["5x"],
 });
 
 export const title = style({
   margin: 0,
+  lineHeight: 1.5,
 });
 
 export const date = style({
   color: vars.color.text.gray,
+});
+
+export const excerpt = style({
+  marginBlock: vars.space["2x"],
+});
+
+export const backLinkWrapper = style({
+  marginBlockEnd: vars.space["5x"],
+});
+
+export const backLink = style({
+  color: "#0ea5e9",
 });

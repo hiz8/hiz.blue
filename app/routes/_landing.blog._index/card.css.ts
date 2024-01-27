@@ -41,11 +41,19 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: "24px",
+  fontSize: "22px",
+  fontWeight: 400,
+  margin: 0,
+});
+
+export const date = style({
+  color: vars.color.text.gray,
 });
 
 export const excerpt = style({
   fontSize: "14px",
+  color: vars.color.text.gray,
+  margin: 0,
 });
 
 export const url = style({});

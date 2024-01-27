@@ -8,14 +8,20 @@ interface CardProps {
   excerpt?: string;
 }
 export function Card({ title, excerpt, date, slug }: CardProps) {
+  // post.date の "YYYY-MM-DDTHH:mm:ssZ" の文字列 を YYYY-MM-DD に変換する
+  const _date = date.slice(0, 10);
+
   return (
     <Link href={`/blog/${slug}`} className={styles.urlLink}>
-      <div className={styles.root}>
+      <section className={styles.root}>
         <div className={styles.content}>
-          <div className={styles.title}>{title}</div>
-          {excerpt && <div className={styles.excerpt}>{excerpt}</div>}
+          <time className={styles.date} dateTime={_date}>
+            {_date}
+          </time>
+          <h2 className={styles.title}>{title}</h2>
+          {excerpt && <p className={styles.excerpt}>{excerpt}</p>}
         </div>
-      </div>
+      </section>
     </Link>
   );
 }
