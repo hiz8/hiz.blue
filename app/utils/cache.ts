@@ -64,5 +64,4 @@ export type Data = {
 export async function storeData(data: Promise<Result>, cache: Cache<Data>) {
   const posts = await data;
   await cache.set({ data: posts });
-  return json({ data: posts });
 }

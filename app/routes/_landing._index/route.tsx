@@ -1,5 +1,9 @@
-import { defer } from "@remix-run/cloudflare";
-import type { MetaFunction, LoaderArgs } from "@remix-run/cloudflare";
+import { defer, json } from "@remix-run/cloudflare";
+import type {
+  MetaFunction,
+  LoaderArgs,
+  AppLoadContext,
+} from "@remix-run/cloudflare";
 import { Await, Link, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
 
@@ -7,7 +11,7 @@ import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse } from "~/utils/post-from-notion";
-import { Cache, storeData, type Data } from "~/utils/cache";
+import { Cache } from "~/utils/cache";
 
 import * as styles from "./route.css";
 
@@ -15,19 +19,44 @@ export const meta: MetaFunction = () => {
   return [{ title: "hiz" }, { name: "description", content: "Home" }];
 };
 
+type Data = {
+  feedItems: FieldItem[];
+};
+
 export async function loader({ context, request }: LoaderArgs) {
   const cache = new Cache<Data>(request);
   const cacheMatch = await cache.get();
 
   if (cacheMatch) {
-    return cacheMatch;
+    return json(cacheMatch);
   }
 
+  const feedItems = genFeedItems(context);
+  context.waitUntil(storeData2(feedItems, cache));
+
+  return defer({ feedItems });
+}
+
+async function genFeedItems(context: AppLoadContext) {
   const client = new Client(context.env.NOTION_API_KEY);
   const data = client.getDatabase(context.env.NOTION_DATABASE_ID);
-  context.waitUntil(storeData(data, cache));
 
-  return defer({ data });
+  const posts = await data;
+  const feedItems: FieldItem[] = posts
+    .map(postFromNotionResponse)
+    .map((post) => ({
+      id: post.id,
+      title: post.title,
+      domain: "hiz.blue",
+      category: "Blog",
+      href: `/blog/${post.slug}`,
+    }));
+  return feedItems;
+}
+
+async function storeData2(data: Promise<FieldItem[]>, cache: Cache<Data>) {
+  const _data = await data;
+  return cache.set({ feedItems: _data });
 }
 
 type FieldItem = {
@@ -39,7 +68,7 @@ type FieldItem = {
 };
 
 export default function Index() {
-  const { data } = useLoaderData<typeof loader>();
+  const { feedItems } = useLoaderData<typeof loader>();
 
   return (
     <div className={styles.root}>
@@ -49,29 +78,15 @@ export default function Index() {
           Feed
         </Headline>
         <Suspense fallback={<p>Loading...</p>}>
-          <Await resolve={data}>
-            {(posts) => {
-              if (!Array.isArray(posts)) {
-                return <p>No feed items yet.</p>;
-              }
-
-              const feedItems: FieldItem[] = posts
-                .map(postFromNotionResponse)
-                .map((post) => ({
-                  id: post.id,
-                  title: post.title,
-                  domain: "hiz.blue",
-                  category: "Blog",
-                  href: `/blog/${post.slug}`,
-                }));
-
+          <Await resolve={feedItems}>
+            {(_feedItems) => {
               return (
                 <>
-                  {feedItems.length === 0 && (
+                  {_feedItems.length === 0 && (
                     <p className={styles.feedItemsEmpty}>No feed items yet.</p>
                   )}
                   <ul className={styles.feedItems}>
-                    {feedItems.map((item) => (
+                    {_feedItems.map((item) => (
                       <Link
                         to={item.href}
                         key={item.id}
