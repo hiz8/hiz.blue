@@ -2,9 +2,19 @@ import { Client as NotionClient } from "@notionhq/client";
 import type {
   PartialBlockObjectResponse,
   BlockObjectResponse,
+  PageObjectResponse,
+  PartialPageObjectResponse,
+  PartialDatabaseObjectResponse,
+  DatabaseObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
 
 export type Blocks = (PartialBlockObjectResponse | BlockObjectResponse)[];
+export type Result = (
+  | PageObjectResponse
+  | PartialPageObjectResponse
+  | DatabaseObjectResponse
+  | PartialDatabaseObjectResponse
+)[];
 
 export class Client {
   private notion: NotionClient;
