@@ -1,4 +1,4 @@
-import { style, vars } from "~/styles.css";
+import { style, vars, responsiveStyle } from "~/styles.css";
 
 export const root = style({
   position: "relative",
@@ -47,13 +47,20 @@ export const feedItemContents = style({
   justifyContent: "space-between",
 });
 
-export const feedItemTitle = style({
-  fontFamily: vars.font.family.systemUI,
-  fontSize: vars.font.size["6x"],
-  fontWeight: 400,
-  lineHeight: 1.2,
-  margin: 0,
-});
+export const feedItemTitle = style([
+  {
+    fontFamily: vars.font.family.systemUI,
+    fontSize: vars.font.size["4x"],
+    fontWeight: 400,
+    lineHeight: 1.2,
+    margin: 0,
+  },
+  responsiveStyle({
+    md: {
+      fontSize: vars.font.size["6x"],
+    },
+  }),
+]);
 
 export const feedItemMeta = style({
   display: "flex",
