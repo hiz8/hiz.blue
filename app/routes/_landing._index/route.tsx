@@ -9,6 +9,11 @@ import { Suspense } from "react";
 
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
+import {
+  Placeholder,
+  PlaceholderLine,
+  PlaceholderHeader,
+} from "~/components/placeholder";
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
@@ -77,7 +82,16 @@ export default function Index() {
           <Icon type="feed" />
           Feed
         </Headline>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense
+          fallback={
+            <Placeholder>
+              <PlaceholderHeader image>
+                <PlaceholderLine />
+                <PlaceholderLine />
+              </PlaceholderHeader>
+            </Placeholder>
+          }
+        >
           <Await resolve={feedItems}>
             {(_feedItems) => {
               return (
