@@ -1,20 +1,23 @@
 import {
   type MetaFunction,
   type LoaderArgs,
-  json,
+  type AppLoadContext,
+  defer,
 } from "@remix-run/cloudflare";
-import { useLoaderData } from "@remix-run/react";
+import { Await, useLoaderData } from "@remix-run/react";
+import { Suspense } from "react";
 
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
-import { Cache } from "~/utils/cache";
+import { Cache, storeData } from "~/utils/cache";
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
+import { Placeholder, PlaceholderLine } from "~/components/placeholder";
 import { Card } from "./card";
 import * as styles from "./route.css";
 
 type Data = {
-  posts: Post[];
+  data: Post[];
 };
 
 export const meta: MetaFunction = () => {
@@ -29,16 +32,23 @@ export async function loader({ context, request }: LoaderArgs) {
     return cacheMatch;
   }
 
-  const client = new Client(context.env.NOTION_API_KEY);
-  const data = await client.getDatabase(context.env.NOTION_DATABASE_ID);
-  const posts = data.map(postFromNotionResponse);
-  context.waitUntil(cache.set({ posts }));
+  const data = genFeedItems(context);
+  context.waitUntil(storeData(data, cache));
 
-  return json({ posts });
+  return defer({ data });
+}
+
+async function genFeedItems(context: AppLoadContext) {
+  const client = new Client(context.env.NOTION_API_KEY);
+  const data = client.getDatabase(context.env.NOTION_DATABASE_ID);
+
+  const posts = await data;
+  const feedItems: Post[] = posts.map(postFromNotionResponse);
+  return feedItems;
 }
 
 export default function Index() {
-  const { posts } = useLoaderData<typeof loader>();
+  const { data } = useLoaderData<typeof loader>();
 
   return (
     <div>
@@ -47,12 +57,27 @@ export default function Index() {
         Blog
       </Headline>
       <div className={styles.cardHolder}>
-        {posts.length === 0 && (
-          <p className={styles.feedItemsEmpty}>No posts yet.</p>
-        )}
-        {posts.map((post) => (
-          <Card key={post.id} {...post} />
-        ))}
+        <Suspense
+          fallback={
+            <Placeholder>
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+            </Placeholder>
+          }
+        >
+          <Await resolve={data}>
+            {(_posts) => {
+              if (_posts.length === 0) {
+                return <p className={styles.feedItemsEmpty}>No posts yet.</p>;
+              }
+              return _posts.map((post) => <Card key={post.id} {...post} />);
+            }}
+          </Await>
+        </Suspense>
       </div>
     </div>
   );
