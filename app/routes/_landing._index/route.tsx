@@ -16,7 +16,7 @@ import {
 } from "~/components/placeholder";
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse } from "~/utils/post-from-notion";
-import { Cache } from "~/utils/cache";
+import { Cache, storeData } from "~/utils/cache";
 
 import * as styles from "./route.css";
 
@@ -24,8 +24,15 @@ export const meta: MetaFunction = () => {
   return [{ title: "hiz" }, { name: "description", content: "Home" }];
 };
 
+type FieldItem = {
+  id: string;
+  title: string;
+  domain: "hiz.blue";
+  category: "Blog";
+  href: `/blog/${string}`;
+};
 type Data = {
-  feedItems: FieldItem[];
+  data: FieldItem[];
 };
 
 export async function loader({ context, request }: LoaderArgs) {
@@ -36,10 +43,10 @@ export async function loader({ context, request }: LoaderArgs) {
     return json(cacheMatch);
   }
 
-  const feedItems = genFeedItems(context);
-  context.waitUntil(storeData2(feedItems, cache));
+  const data = genFeedItems(context);
+  context.waitUntil(storeData(data, cache));
 
-  return defer({ feedItems });
+  return defer({ data });
 }
 
 async function genFeedItems(context: AppLoadContext) {
@@ -59,21 +66,8 @@ async function genFeedItems(context: AppLoadContext) {
   return feedItems;
 }
 
-async function storeData2(data: Promise<FieldItem[]>, cache: Cache<Data>) {
-  const _data = await data;
-  return cache.set({ feedItems: _data });
-}
-
-type FieldItem = {
-  id: string;
-  title: string;
-  domain: "hiz.blue";
-  category: "Blog";
-  href: `/blog/${string}`;
-};
-
 export default function Index() {
-  const { feedItems } = useLoaderData<typeof loader>();
+  const { data } = useLoaderData<typeof loader>();
 
   return (
     <div className={styles.root}>
@@ -92,15 +86,15 @@ export default function Index() {
             </Placeholder>
           }
         >
-          <Await resolve={feedItems}>
-            {(_feedItems) => {
+          <Await resolve={data}>
+            {(feedItems) => {
               return (
                 <>
-                  {_feedItems.length === 0 && (
+                  {feedItems.length === 0 && (
                     <p className={styles.feedItemsEmpty}>No feed items yet.</p>
                   )}
                   <ul className={styles.feedItems}>
-                    {_feedItems.map((item) => (
+                    {feedItems.map((item) => (
                       <Link
                         to={item.href}
                         key={item.id}
