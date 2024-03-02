@@ -3,7 +3,6 @@ import type {
   Response as CFResponse,
   Request as CFRequest,
 } from "@cloudflare/workers-types";
-import { json } from "@remix-run/cloudflare";
 import type { Result } from "~/utils/notion";
 
 /**
@@ -61,7 +60,10 @@ export type Data = {
  * @param cache - The cache
  * @returns The data from the cache
  */
-export async function storeData(data: Promise<Result>, cache: Cache<Data>) {
-  const posts = await data;
-  await cache.set({ data: posts });
+export async function storeData<T>(
+  data: Promise<T>,
+  cache: Cache<{ data: T }>,
+) {
+  const res = await data;
+  return cache.set({ data: res });
 }
