@@ -9,7 +9,7 @@ import { Suspense } from "react";
 
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
-import { Cache, storeData } from "~/utils/cache";
+import { Cache } from "~/utils/cache";
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
 import { Placeholder, PlaceholderLine } from "~/components/placeholder";
@@ -33,9 +33,14 @@ export async function loader({ context, request }: LoaderArgs) {
   }
 
   const data = genFeedItems(context);
-  context.waitUntil(storeData(data, cache));
+  context.waitUntil(setCache(data, cache));
 
   return defer({ data });
+}
+
+async function setCache(data: Promise<Post[]>, cache: Cache<Data>) {
+  const res = await data;
+  await cache.set({ data: res });
 }
 
 async function genFeedItems(context: AppLoadContext) {

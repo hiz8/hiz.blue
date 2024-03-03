@@ -16,7 +16,7 @@ import {
 } from "~/components/placeholder";
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse } from "~/utils/post-from-notion";
-import { Cache, storeData } from "~/utils/cache";
+import { Cache } from "~/utils/cache";
 
 import * as styles from "./route.css";
 
@@ -44,9 +44,14 @@ export async function loader({ context, request }: LoaderArgs) {
   }
 
   const data = genFeedItems(context);
-  context.waitUntil(storeData(data, cache));
+  context.waitUntil(setCache(data, cache));
 
   return defer({ data });
+}
+
+async function setCache(data: Promise<FieldItem[]>, cache: Cache<Data>) {
+  const res = await data;
+  await cache.set({ data: res });
 }
 
 async function genFeedItems(context: AppLoadContext) {

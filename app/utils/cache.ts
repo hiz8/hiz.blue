@@ -53,17 +53,3 @@ export class Cache<T> {
 export type Data = {
   data: Promise<Result> | Result;
 };
-
-/**
- * Get the data from the cache
- * @param data - The data to cache
- * @param cache - The cache
- * @returns The data from the cache
- */
-export async function storeData<T>(
-  data: Promise<T>,
-  cache: Cache<{ data: T }>,
-) {
-  const res = await data;
-  return cache.set({ data: res });
-}
