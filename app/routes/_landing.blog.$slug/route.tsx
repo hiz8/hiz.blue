@@ -1,10 +1,16 @@
-import { type MetaFunction, type LoaderArgs } from "@remix-run/cloudflare";
-import { useLoaderData, Link } from "@remix-run/react";
+import {
+  type MetaFunction,
+  type LoaderArgs,
+  defer,
+} from "@remix-run/cloudflare";
+import { useLoaderData, Await, Link } from "@remix-run/react";
 import { Render } from "@9gustin/react-notion-render";
+import { Suspense } from "react";
 
 import { Client, type Blocks } from "~/utils/notion";
 import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
+import { Placeholder, PlaceholderLine } from "~/components/placeholder";
 
 import * as styles from "./route.css";
 
@@ -55,10 +61,22 @@ export async function loader({ params, context, request }: LoaderArgs) {
   );
 
   const post = postFromNotionResponse(data);
-  const blocks = await client.getBlocks(post.id);
-  context.waitUntil(cache.set({ post, blocks }));
+  const blocks = client.getBlocks(post.id);
 
-  return { post, blocks, backTo };
+  context.waitUntil(setCache({ post, blocks }, cache));
+
+  return defer({ post, blocks, backTo });
+}
+
+async function setCache(
+  data: {
+    post: Post;
+    blocks: Promise<Blocks>;
+  },
+  cache: Cache<Data>,
+) {
+  const res = await data.blocks;
+  await cache.set({ post: data.post, blocks: res });
 }
 
 export default function Index() {
@@ -76,8 +94,25 @@ export default function Index() {
             {_date}
           </time>
         </header>
-        {/* biome-ignore lint/suspicious/noExplicitAny: <explanation> */}
-        <Render blocks={blocks as any} />
+        <Suspense
+          fallback={
+            <Placeholder>
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+              <PlaceholderLine />
+            </Placeholder>
+          }
+        >
+          <Await resolve={blocks}>
+            {(blocks) => {
+              // biome-ignore lint/suspicious/noExplicitAny:
+              return <Render blocks={blocks as any} />;
+            }}
+          </Await>
+        </Suspense>
       </article>
       {backTo && (
         <div className={styles.backLinkWrapper}>
