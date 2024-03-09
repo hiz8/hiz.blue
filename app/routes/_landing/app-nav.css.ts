@@ -42,10 +42,16 @@ export const link = style([
 
     selectors: {
       "&[data-hovered='true']": {
+        color: vars.color.text.white,
         backgroundColor: "rgba( 255, 255, 255, 0.3)",
       },
       "&[data-focus-visible='true']": {
+        color: vars.color.text.white,
         backgroundColor: "rgba( 255, 255, 255, 0.3)",
+      },
+      "&[data-current='true']": {
+        color: vars.color.text.white,
+        fontWeight: 700,
       },
     },
   },
