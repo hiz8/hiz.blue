@@ -89,23 +89,26 @@ const arcives = [
 
 export default function Index() {
   return (
-    <div>
+    <>
       <Headline>
         <Icon type="works" />
         Works
       </Headline>
       <div className={styles.cardHolder}>
-        {works.reverse().map((work) => (
+        {works.sort(sortById).map((work) => (
           <Card key={work.id} {...work} />
         ))}
       </div>
 
-      <Headline>Legacy/Archived</Headline>
+      <Headline level={2}>Legacy/Archived</Headline>
       <div className={styles.cardHolder}>
-        {arcives.reverse().map((work) => (
+        {arcives.sort(sortById).map((work) => (
           <Card key={work.id} {...work} />
         ))}
       </div>
-    </div>
+    </>
   );
 }
+
+const sortById = (a: { id: string }, b: { id: string }) =>
+  a.id < b.id ? 1 : -1;

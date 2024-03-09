@@ -16,7 +16,7 @@ export const vars = createGlobalTheme(":root", {
       blue: "#091581",
     },
     component: {
-      border: "#D9D9D9",
+      border: "#E8E8E8",
     },
   },
   space: {
