@@ -1,4 +1,4 @@
-import { isFullDatabase, isFullPage } from "@notionhq/client";
+import { type isFullDatabase, isFullPage } from "@notionhq/client";
 
 type NotionResponse = Parameters<typeof isFullDatabase>[0];
 
