@@ -31,11 +31,16 @@ export const root = style([
   }),
 ]);
 
+export const headlineLink = style({
+  zIndex: 1,
+  textDecoration: "none",
+  color: "inherit",
+});
+
 export const headline = style([
   {
     fontWeight: 500,
     margin: 0,
-    zIndex: 1,
   },
   responsiveStyle({
     md: {
