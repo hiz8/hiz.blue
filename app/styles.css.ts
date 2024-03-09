@@ -7,7 +7,7 @@ export const vars = createGlobalTheme(":root", {
       white: "#fff",
     },
     text: {
-      white: "#fff",
+      white: "#f7f9f9",
       black: "#1C274C",
       gray: "#888",
     },
