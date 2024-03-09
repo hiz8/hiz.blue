@@ -4,19 +4,26 @@ export const root = style([
   {
     display: "flex",
     gap: vars.space["3x"],
+    borderBottom: `1px solid ${vars.color.component.border}`,
+    paddingBottom: vars.space["4x"],
+    selectors: {
+      "&:last-child": {
+        borderBottom: "none",
+      },
+    },
   },
   responsiveStyle({
     md: {
-      gap: vars.space["4x"],
+      gap: vars.space["3x"],
     },
   }),
 ]);
 
 export const imageWrapper = style([
   {
-    width: "60px",
-    height: "60px",
-    borderRadius: "14px",
+    width: "40px",
+    height: "40px",
+    borderRadius: "8px",
     overflow: "hidden",
     boxSizing: "border-box",
 
@@ -26,8 +33,8 @@ export const imageWrapper = style([
   },
   responsiveStyle({
     md: {
-      width: "60px",
-      height: "60px",
+      width: "40px",
+      height: "40px",
     },
   }),
 ]);
@@ -45,7 +52,7 @@ export const content = style({
 });
 
 export const title = style({
-  fontSize: vars.font.size["6x"],
+  fontSize: vars.font.size["5x"],
 });
 
 export const description = style({
