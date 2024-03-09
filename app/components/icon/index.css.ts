@@ -40,6 +40,12 @@ export const type = styleVariants({
       maskImage: "url(./assets/home.svg)",
     },
   },
+  homeBold: {
+    "::before": {
+      WebkitMaskImage: "url(./assets/home-bold.svg)",
+      maskImage: "url(./assets/home-bold.svg)",
+    },
+  },
   feed: {
     "::before": {
       WebkitMaskImage: "url(./assets/feed.svg)",
@@ -52,10 +58,22 @@ export const type = styleVariants({
       maskImage: "url(./assets/works.svg)",
     },
   },
+  worksBold: {
+    "::before": {
+      WebkitMaskImage: "url(./assets/works-bold.svg)",
+      maskImage: "url(./assets/works-bold.svg)",
+    },
+  },
   blog: {
     "::before": {
       WebkitMaskImage: "url(./assets/blog.svg)",
       maskImage: "url(./assets/blog.svg)",
+    },
+  },
+  blogBold: {
+    "::before": {
+      WebkitMaskImage: "url(./assets/blog-bold.svg)",
+      maskImage: "url(./assets/blog-bold.svg)",
     },
   },
   externalLink: {
