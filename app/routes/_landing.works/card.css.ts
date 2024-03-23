@@ -60,13 +60,13 @@ export const description = style({
   color: vars.color.text.gray,
 });
 
-export const url = style({});
+export const url = style({
+  display: "flex",
+  gap: vars.space["2x"],
+  marginBlockStart: vars.space["1x"],
+});
 
 export const urlLink = style({
-  fontSize: vars.font.size["2x"],
+  fontSize: vars.font.size["3x"],
   color: vars.color.text.black,
-
-  ":any-link": {
-    color: "#0ea5e9",
-  },
 });
