@@ -6,6 +6,8 @@ type Props = {
     | "home"
     | "homeBold"
     | "feed"
+    | "global"
+    | "github"
     | "works"
     | "worksBold"
     | "blog"
