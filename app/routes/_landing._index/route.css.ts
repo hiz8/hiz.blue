@@ -49,7 +49,6 @@ export const feedItemContents = style({
 
 export const feedItemTitle = style([
   {
-    fontFamily: vars.font.family.systemUI,
     fontSize: vars.font.size["4x"],
     fontWeight: 400,
     lineHeight: 1.2,
@@ -69,12 +68,14 @@ export const feedItemMeta = style({
 
 export const feedItemDomain = style({
   fontSize: vars.font.size["1x"],
+  fontFamily: vars.font.family.systemUI,
   margin: 0,
   color: vars.color.text.gray,
 });
 
 export const feedItemCategory = style({
   fontSize: vars.font.size["1x"],
+  fontFamily: vars.font.family.systemUI,
   color: vars.color.text.black,
   margin: 0,
   padding: "0.125em 0.5em",

@@ -9,10 +9,10 @@ export const vars = createGlobalTheme(":root", {
     text: {
       white: "#f7f9f9",
       black: "#1C274C",
-      gray: "#888",
+      gray: "#666",
     },
     background: {
-      white: "#fff",
+      white: "##f6fbff",
       blue: "#091581",
     },
     component: {
@@ -34,8 +34,10 @@ export const vars = createGlobalTheme(":root", {
   },
   font: {
     family: {
-      sans: "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
+      sans: "'Noto Sans Japanese', sans-serif",
       systemUI: "system-ui",
+      brand:
+        "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
     },
     size: {
       "1x": "12px",

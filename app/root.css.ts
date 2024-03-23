@@ -5,6 +5,11 @@ globalFontFace("inter", {
   fontDisplay: "block",
 });
 
+globalFontFace("Noto Sans Japanese", {
+  src: "url(/fonts/NotoSansCJKjp-Light.min.woff2)",
+  fontDisplay: "block",
+});
+
 globalStyle("html", {
   height: "100%",
 });

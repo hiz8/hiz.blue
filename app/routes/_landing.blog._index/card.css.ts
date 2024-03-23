@@ -41,7 +41,6 @@ export const content = style({
 });
 
 export const title = style({
-  fontFamily: vars.font.family.systemUI,
   fontSize: vars.font.size["6x"],
   fontWeight: 400,
   margin: 0,
@@ -49,10 +48,10 @@ export const title = style({
 
 export const date = style({
   color: vars.color.text.gray,
+  fontFamily: vars.font.family.systemUI,
 });
 
 export const excerpt = style({
-  fontFamily: vars.font.family.systemUI,
   fontSize: vars.font.size["2x"],
   color: vars.color.text.gray,
   margin: 0,

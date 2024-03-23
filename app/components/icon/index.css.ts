@@ -52,6 +52,18 @@ export const type = styleVariants({
       maskImage: "url(./assets/feed.svg)",
     },
   },
+  github: {
+    "::before": {
+      WebkitMaskImage: "url(./assets/github.svg)",
+      maskImage: "url(./assets/github.svg)",
+    },
+  },
+  global: {
+    "::before": {
+      WebkitMaskImage: "url(./assets/global.svg)",
+      maskImage: "url(./assets/global.svg)",
+    },
+  },
   works: {
     "::before": {
       WebkitMaskImage: "url(./assets/works.svg)",

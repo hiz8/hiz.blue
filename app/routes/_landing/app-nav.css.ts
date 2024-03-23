@@ -3,6 +3,7 @@ import { style, vars, responsiveStyle } from "~/styles.css";
 export const root = style([
   {
     backgroundColor: vars.color.background.blue,
+    fontFamily: vars.font.family.systemUI,
     color: vars.color.text.white,
     display: "flex",
     justifyContent: "space-around",

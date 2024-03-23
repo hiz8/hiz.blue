@@ -10,31 +10,78 @@ export const meta: MetaFunction = () => {
   return [{ title: "Works - hiz" }, { name: "description", content: "Works" }];
 };
 
-const works = [
+type Work = {
+  id: string;
+  title: string;
+  description: string;
+  urls: {
+    type: "website" | "github";
+    url: string;
+  }[];
+  image?: string;
+};
+
+const works: Work[] = [
   {
     id: "1",
     title: "VS Code Ruby Blue Theme",
     description: "Dark, high contrast theme for VS Code.",
-    url: "https://marketplace.visualstudio.com/items?itemName=hirofumii.rubyblue-theme",
+    urls: [
+      {
+        type: "website",
+        url: "https://marketplace.visualstudio.com/items?itemName=hirofumii.rubyblue-theme",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/vscode-theme-rubyblue",
+      },
+    ],
     image: "/images/icon-ruby-blue-theme.png",
   },
   {
     id: "2",
     title: "Noto Sans CJK JP min",
     description: "Subset of the Noto Sans CJK JP for the size down.",
-    url: "https://hiz8.github.io/Noto-Sans-CJK-JP.min/",
+    urls: [
+      {
+        type: "website",
+        url: "https://hiz8.github.io/Noto-Sans-CJK-JP.min/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/Noto-Sans-CJK-JP.min",
+      },
+    ],
   },
   {
     id: "3",
     title: "Noto Serif CJK JP min",
     description: "Subset of the Noto Selif CJK JP for the size down.",
-    url: "https://hiz8.github.io/Noto-Serif-CJK-JP.min/",
+    urls: [
+      {
+        type: "website",
+        url: "https://hiz8.github.io/Noto-Serif-CJK-JP.min/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/Noto-Serif-CJK-JP.min",
+      },
+    ],
   },
   {
     id: "4",
     title: "airbeat",
     description: "Offline first metronome application.",
-    url: "https://airbeat.hizapp.blue/",
+    urls: [
+      {
+        type: "website",
+        url: "https://airbeat.hizapp.blue/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/airbeat",
+      },
+    ],
     image: "/images/icon-airbeat.svg",
   },
   {
@@ -42,48 +89,114 @@ const works = [
     title: "Giji one",
     description:
       "A tool for the assistance of people in the creation of meeting minutes.",
-    url: "https://gijione.hizapp.blue/",
+    urls: [
+      {
+        type: "website",
+        url: "https://gijione.hizapp.blue/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/giji-one",
+      },
+    ],
     image: "/images/icon-gijione.svg",
   },
   {
     id: "6",
     title: "Cinemasaurus",
     description: "沖縄県内の映画情報サイト",
-    url: "https://cinemasaurus.net/",
+    urls: [
+      {
+        type: "website",
+        url: "https://cinemasaurus.net/",
+      },
+    ],
     image: "/images/icon-cinemasaurus.svg",
   },
 ];
 
-const arcives = [
+const arcives: Work[] = [
   {
     id: "1",
     title: "NAUTILUS OFFICIAL WEBSITE",
     description: "NAUTILUS の公式ウェブサイト",
-    url: "https://nautilus-jp.com/",
+    urls: [
+      {
+        type: "website",
+        url: "https://nautilus-jp.com/",
+      },
+    ],
   },
   {
     id: "2",
     title: "宜野湾 HUMAN STAGE",
     description: "宜野湾 HUMAN STAGE の公式ウェブサイト",
-    url: "https://www.humanstage.net/",
+    urls: [
+      {
+        type: "website",
+        url: "https://www.humanstage.net/",
+      },
+    ],
   },
   {
     id: "3",
     title: "Playlog",
     description: "Webフロントエンドについて徒然と",
-    url: "https://log.plyrs.net/",
+    urls: [
+      {
+        type: "website",
+        url: "https://log.plyrs.net/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/plyrs/plylog",
+      },
+    ],
   },
   {
     id: "4",
     title: "Playground",
     description: "Playground for Future of Web Technology.",
-    url: "https://ground.plyrs.net/",
+    urls: [
+      {
+        type: "website",
+        url: "https://ground.plyrs.net/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/plyrs/plyground",
+      },
+    ],
   },
   {
     id: "5",
     title: "hexo-theme-amp",
     description: "A simple and mobile first Hexo template on AMP ⚡ HTML.",
-    url: "https://hiz8.github.io/hexo-theme-amp/",
+    urls: [
+      {
+        type: "website",
+        url: "https://hiz8.github.io/hexo-theme-amp/",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/hexo-theme-amp",
+      },
+    ],
+  },
+  {
+    id: "7",
+    title: "Spectacle Boilerplate SWC",
+    description: "Spectacle Boilerplate based on SWC for high speed.",
+    urls: [
+      {
+        type: "website",
+        url: "https://github.com/hiz8/spectacle-presentation-swc",
+      },
+      {
+        type: "github",
+        url: "https://github.com/hiz8/spectacle-presentation-swc",
+      },
+    ],
   },
 ];
 

@@ -9,9 +9,12 @@ interface CardProps {
   title: string;
   description: string;
   image?: string;
-  url?: string;
+  urls?: {
+    type: "website" | "github";
+    url: string;
+  }[];
 }
-export function Card({ title, description, image, url }: CardProps) {
+export function Card({ title, description, image, urls }: CardProps) {
   return (
     <div className={styles.root}>
       <div className={styles.imageWrapper}>
@@ -29,9 +32,16 @@ export function Card({ title, description, image, url }: CardProps) {
         <div className={styles.title}>{title}</div>
         <div className={styles.description}>{description}</div>
         <div className={styles.url}>
-          <Link href={url} target="_blank" className={styles.urlLink}>
-            {url} <Icon type="externalLink" />
-          </Link>
+          {urls?.map(({ type, url }) => (
+            <Link
+              key={url}
+              href={url}
+              target="_blank"
+              className={styles.urlLink}
+            >
+              <Icon type={type === "website" ? "global" : "github"} />
+            </Link>
+          ))}
         </div>
       </div>
     </div>
