@@ -85,6 +85,12 @@ const arcives = [
     description: "A simple and mobile first Hexo template on AMP ⚡ HTML.",
     url: "https://hiz8.github.io/hexo-theme-amp/",
   },
+  {
+    id: "7",
+    title: "Spectacle Boilerplate SWC",
+    description: "Spectacle Boilerplate based on SWC for high speed.",
+    url: "https://github.com/hiz8/spectacle-presentation-swc",
+  },
 ];
 
 export default function Index() {
