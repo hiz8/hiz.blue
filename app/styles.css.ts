@@ -34,8 +34,10 @@ export const vars = createGlobalTheme(":root", {
   },
   font: {
     family: {
-      sans: "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
+      sans: "'Noto Sans Japanese', sans-serif",
       systemUI: "system-ui",
+      brand:
+        "Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
     },
     size: {
       "1x": "12px",

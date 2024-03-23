@@ -4,6 +4,7 @@ export const root = style([
   {
     background:
       "url(/images/patterns_01.png) top -10px right 0 no-repeat, linear-gradient(180deg, #7E94CE 0%, #13D5E7 48.96%, #13D5E7 81.25%, #F0F7D8 100%)",
+    fontFamily: vars.font.family.brand,
     color: vars.color.text.white,
     display: "flex",
     alignItems: "center",

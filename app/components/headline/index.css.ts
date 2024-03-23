@@ -3,7 +3,8 @@ import { style, vars, responsiveStyle } from "~/styles.css";
 export const headline = style([
   {
     fontSize: vars.font.size["5x"],
-    fontWeight: 500,
+    fontFamily: vars.font.family.brand,
+    fontWeight: 400,
     display: "flex",
     alignItems: "center",
     gap: vars.space["1x"],
