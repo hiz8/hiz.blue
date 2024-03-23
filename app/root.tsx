@@ -16,7 +16,23 @@ import * as styles from "./root.css";
 export const links: LinksFunction = () => {
   if (!cssBundleHref) throw new Error("Missing css bundle");
 
-  return [{ rel: "stylesheet", href: cssBundleHref }];
+  return [
+    { rel: "stylesheet", href: cssBundleHref },
+    {
+      rel: "preload",
+      href: "/fonts/Inter.woff2",
+      as: "font",
+      type: "font/woff2",
+      crossOrigin: "anonymous",
+    },
+    {
+      rel: "preload",
+      href: "/fonts/NotoSansCJKjp-Light.min.woff2",
+      as: "font",
+      type: "font/woff2",
+      crossOrigin: "anonymous",
+    },
+  ];
 };
 
 export default function App() {
