@@ -9,10 +9,10 @@ export const vars = createGlobalTheme(":root", {
     text: {
       white: "#f7f9f9",
       black: "#1C274C",
-      gray: "#888",
+      gray: "#666",
     },
     background: {
-      white: "#fff",
+      white: "##f6fbff",
       blue: "#091581",
     },
     component: {
