@@ -190,7 +190,7 @@ const arcives: Work[] = [
     urls: [
       {
         type: "website",
-        url: "https://github.com/hiz8/spectacle-presentation-swc",
+        url: "https://hiz8.github.io/spectacle-presentation-swc/",
       },
       {
         type: "github",

@@ -34,7 +34,7 @@ export function Card({ title, description, image, urls }: CardProps) {
         <div className={styles.url}>
           {urls?.map(({ type, url }) => (
             <Link
-              key={url}
+              key={`${type}-${url}`}
               href={url}
               target="_blank"
               className={styles.urlLink}
