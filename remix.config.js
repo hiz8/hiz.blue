@@ -12,4 +12,11 @@ export default {
   // appDirectory: "app",
   // assetsBuildDirectory: "public/build",
   // publicPath: "/build/",
+
+  future: {
+    v3_fetcherPersist: true,
+    v3_relativeSplatPaths: true,
+    v3_throwAbortReason: true,
+    unstable_singleFetch: true,
+  },
 };
