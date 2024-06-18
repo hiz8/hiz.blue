@@ -29,13 +29,17 @@ export class Cache<T> {
    * Get the cache
    */
   async get() {
-    const cacheMatch = await this.cache.match(this.cacheRequest);
+    try {
+      const cacheMatch = await this.cache.match(this.cacheRequest);
 
-    if (cacheMatch) {
-      return (await cacheMatch.json()) as T;
+      if (cacheMatch) {
+        return (await cacheMatch.json()) as T;
+      }
+
+      return null;
+    } catch (error) {
+      return null;
     }
-
-    return null;
   }
 
   /**
