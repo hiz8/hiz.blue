@@ -17,6 +17,7 @@ export default {
     v3_fetcherPersist: true,
     v3_relativeSplatPaths: true,
     v3_throwAbortReason: true,
+    unstable_optimizeDeps: true,
     unstable_singleFetch: true,
   },
 };
