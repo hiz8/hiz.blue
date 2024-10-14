@@ -18,6 +18,7 @@ export default {
     v3_relativeSplatPaths: true,
     v3_throwAbortReason: true,
     unstable_optimizeDeps: true,
-    unstable_singleFetch: true,
+    v3_lazyRouteDiscovery: true,
+    v3_singleFetch: true,
   },
 };
