@@ -36,7 +36,7 @@ type Data = {
 };
 
 export async function loader({ context, request }: LoaderArgs) {
-  const cache = new Cache<Data>(request);
+  const cache = new Cache<Data>(request, context.caches);
   const cacheMatch = await cache.get();
 
   if (cacheMatch) {
@@ -44,7 +44,7 @@ export async function loader({ context, request }: LoaderArgs) {
   }
 
   const data = genFeedItems(context);
-  context.waitUntil(setCache(data, cache));
+  context.ctx.waitUntil(setCache(data, cache));
 
   return defer({ data });
 }

@@ -4,9 +4,9 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev --manual -c \"npm run start\"",
-    "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "start": "wrangler pages dev --compatibility-date=2023-06-21 ./build/client",
     "typecheck": "tsc",
     "lint": "biome lint ./app",
     "fmt": "biome format --write ./app"
@@ -16,7 +16,6 @@
     "@notionhq/client": "^2.2.15",
     "@remix-run/cloudflare": "^2.13.1",
     "@remix-run/cloudflare-pages": "^2.13.1",
-    "@remix-run/css-bundle": "^2.13.1",
     "@remix-run/react": "^2.13.1",
     "isbot": "^5.1.17",
     "react": "^18.3.1",
@@ -29,8 +28,10 @@
     "@remix-run/dev": "^2.13.1",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
-    "@vanilla-extract/css": "^1.16.0",
+    "@vanilla-extract/vite-plugin": "^4.0.17",
     "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vite-tsconfig-paths": "^5.0.1",
     "wrangler": "^3.81.0"
   },
   "engines": {
