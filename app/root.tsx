@@ -1,8 +1,6 @@
 import type { LinksFunction } from "@remix-run/cloudflare";
-import { cssBundleHref } from "@remix-run/css-bundle";
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -14,10 +12,7 @@ import { RouterProvider } from "react-aria-components";
 import * as styles from "./root.css";
 
 export const links: LinksFunction = () => {
-  if (!cssBundleHref) throw new Error("Missing css bundle");
-
   return [
-    { rel: "stylesheet", href: cssBundleHref },
     {
       rel: "preload",
       href: "/fonts/Inter.woff2",
@@ -53,7 +48,6 @@ export default function App() {
         </RouterProvider>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );

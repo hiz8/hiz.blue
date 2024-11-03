@@ -47,7 +47,7 @@ export async function loader({ params, context, request }: LoaderArgs) {
     throw new Response("Not Found", { status: 404 });
   }
 
-  const cache = new Cache<Data>(request);
+  const cache = new Cache<Data>(request, context.caches);
   const cacheMatch = await cache.get();
 
   if (cacheMatch) {
@@ -63,7 +63,7 @@ export async function loader({ params, context, request }: LoaderArgs) {
   const post = postFromNotionResponse(data);
   const blocks = client.getBlocks(post.id);
 
-  context.waitUntil(setCache({ post, blocks }, cache));
+  context.ctx.waitUntil(setCache({ post, blocks }, cache));
 
   return defer({ post, blocks, backTo });
 }

@@ -1,9 +1,9 @@
-/// <reference types="@remix-run/dev" />
 /// <reference types="@remix-run/cloudflare" />
 /// <reference types="@cloudflare/workers-types" />
 
 declare module "@remix-run/cloudflare" {
   import type { DataFunctionArgs as RemixDataFunctionArgs } from "@remix-run/cloudflare/dist/index";
+  import type { CacheStorage } from "@cloudflare/workers-types";
   export * from "@remix-run/cloudflare/dist/index";
 
   export interface AppLoadContext extends Record<string, unknown> {
@@ -11,7 +11,10 @@ declare module "@remix-run/cloudflare" {
       NOTION_API_KEY: string;
       NOTION_DATABASE_ID: string;
     };
-    waitUntil: (promise: Promise<unknown>) => void;
+    caches: CacheStorage;
+    ctx: {
+      waitUntil: (promise: Promise<unknown>) => void;
+    };
   }
 
   export interface DataFunctionArgs

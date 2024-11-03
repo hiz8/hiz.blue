@@ -5,6 +5,7 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "jsx": "react-jsx",
+    "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "target": "ES2022",
@@ -15,6 +16,7 @@
     "paths": {
       "~/*": ["./app/*"]
     },
+    "types": ["@remix-run/node", "vite/client"],
     "skipLibCheck": true,
 
     // Remix takes care of building everything in `remix build`.
