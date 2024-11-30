@@ -4,7 +4,7 @@ import { AppNav } from "./app-nav";
 import { AppBanner } from "./app-banner";
 import { AppFooter } from "./app-footer";
 
-import * as styles from "./route.css";
+import * as styles from "./index.css";
 
 export default function Index() {
   return (

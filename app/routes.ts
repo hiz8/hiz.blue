@@ -6,11 +6,11 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  layout("routes/_landing/route.tsx", [
-    index("routes/_landing._index/route.tsx"),
-    route("blog", "routes/_landing.blog._index/route.tsx"),
-    route("blog/:slug", "routes/_landing.blog.$slug/route.tsx"),
-    route("works", "routes/_landing.works/route.tsx"),
-    route("about", "routes/_landing.about.tsx"),
+  layout("routes/layout/index.tsx", [
+    index("routes/home/index.tsx"),
+    route("blog", "routes/blog/index.tsx"),
+    route("blog/:slug", "routes/blog.$slug/index.tsx"),
+    route("works", "routes/works/index.tsx"),
+    route("about", "routes/about.tsx"),
   ]),
 ] satisfies RouteConfig;

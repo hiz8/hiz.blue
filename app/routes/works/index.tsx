@@ -4,7 +4,7 @@ import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";
 import { Card } from "./card";
 
-import * as styles from "./route.css";
+import * as styles from "./index.css";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Works - hiz" }, { name: "description", content: "Works" }];

@@ -1,5 +1,5 @@
 import type { MetaFunction } from "react-router";
-import type { Route } from "./+types/route";
+import type { Route } from "./+types";
 import { useLoaderData, Await, Link } from "react-router";
 import { Render } from "@9gustin/react-notion-render";
 import { Suspense } from "react";
@@ -9,7 +9,7 @@ import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
 import { Placeholder, PlaceholderLine } from "~/components/placeholder";
 
-import * as styles from "./route.css";
+import * as styles from "./index.css";
 
 type Data = {
   post: Post;
