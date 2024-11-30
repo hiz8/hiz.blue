@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "@remix-run/react";
+import { useLocation } from "react-router";
 import { Link, TooltipTrigger } from "react-aria-components";
 
 import { Icon } from "~/components/icon";

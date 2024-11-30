@@ -1,9 +1,6 @@
-import {
-  type MetaFunction,
-  type LoaderArgs,
-  defer,
-} from "@remix-run/cloudflare";
-import { useLoaderData, Await, Link } from "@remix-run/react";
+import type { MetaFunction } from "react-router";
+import type { Route } from "./+types/route";
+import { useLoaderData, Await, Link } from "react-router";
 import { Render } from "@9gustin/react-notion-render";
 import { Suspense } from "react";
 
@@ -31,7 +28,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
   ];
 };
 
-export async function loader({ params, context, request }: LoaderArgs) {
+export async function loader({ params, context, request }: Route.LoaderArgs) {
   // request.url のオリジンを取得する
   const origin = request.url.split("/").slice(0, 3).join("/");
   const referer = request.headers.get("referer");
@@ -65,7 +62,7 @@ export async function loader({ params, context, request }: LoaderArgs) {
 
   context.ctx.waitUntil(setCache({ post, blocks }, cache));
 
-  return defer({ post, blocks, backTo });
+  return { post, blocks, backTo };
 }
 
 async function setCache(

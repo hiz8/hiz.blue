@@ -17,7 +17,7 @@ export class Cache<T> {
    * @param request - The request
    */
   constructor(request: Request, caches: CacheStorage) {
-    this.cache = (caches as unknown as CacheStorage).default;
+    this.cache = caches.default;
     const cacheURL = new URL(request.url);
 
     this.cacheRequest = new Request(

@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/cloudflare";
+import type { MetaFunction } from "react-router";
 
 import { Headline } from "~/components/headline";
 import { Icon } from "~/components/icon";

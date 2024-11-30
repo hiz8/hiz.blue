@@ -1,8 +1,8 @@
-import type { ServerBuild } from "@remix-run/cloudflare";
+import type { ServerBuild } from "react-router";
 import {
   createPagesFunctionHandler,
   type GetLoadContextFunction,
-} from "@remix-run/cloudflare-pages";
+} from "@react-router/cloudflare";
 
 import * as build from "../build/server";
 import { getLoadContext } from "../load-context";

@@ -1,10 +1,6 @@
-import { defer, json } from "@remix-run/cloudflare";
-import type {
-  MetaFunction,
-  LoaderArgs,
-  AppLoadContext,
-} from "@remix-run/cloudflare";
-import { Await, Link, useLoaderData } from "@remix-run/react";
+import type { MetaFunction, AppLoadContext } from "react-router";
+import type { Route } from "./+types/route";
+import { Await, Link, useLoaderData } from "react-router";
 import { Suspense } from "react";
 
 import { Headline } from "~/components/headline";
@@ -35,18 +31,18 @@ type Data = {
   data: FieldItem[];
 };
 
-export async function loader({ context, request }: LoaderArgs) {
+export async function loader({ context, request }: Route.LoaderArgs) {
   const cache = new Cache<Data>(request, context.caches);
   const cacheMatch = await cache.get();
 
   if (cacheMatch) {
-    return json(cacheMatch);
+    return cacheMatch;
   }
 
   const data = genFeedItems(context);
   context.ctx.waitUntil(setCache(data, cache));
 
-  return defer({ data });
+  return { data };
 }
 
 async function setCache(data: Promise<FieldItem[]>, cache: Cache<Data>) {
