@@ -1,5 +1,5 @@
 import type { MetaFunction, AppLoadContext } from "react-router";
-import type { Route } from "./+types/route";
+import type { Route } from "./+types";
 import { Await, Link, useLoaderData } from "react-router";
 import { Suspense } from "react";
 
@@ -14,7 +14,7 @@ import { Client } from "~/utils/notion";
 import { postFromNotionResponse } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
 
-import * as styles from "./route.css";
+import * as styles from "./index.css";
 
 export const meta: MetaFunction = () => {
   return [{ title: "hiz" }, { name: "description", content: "Home" }];
