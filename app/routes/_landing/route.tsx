@@ -1,4 +1,4 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router";
 
 import { AppNav } from "./app-nav";
 import { AppBanner } from "./app-banner";

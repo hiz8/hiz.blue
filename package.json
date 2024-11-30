@@ -4,29 +4,27 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "build": "react-router build",
+    "dev": "react-router dev",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./build/client",
-    "typecheck": "tsc",
+    "typecheck": "react-router typegen && tsc",
     "lint": "biome lint ./app",
     "fmt": "biome format --write ./app"
   },
   "dependencies": {
     "@9gustin/react-notion-render": "^3.11.3",
     "@notionhq/client": "^2.2.15",
-    "@remix-run/cloudflare": "^2.15.0",
-    "@remix-run/cloudflare-pages": "^2.15.0",
-    "@remix-run/react": "^2.15.0",
+    "@react-router/cloudflare": "^7.0.1",
     "isbot": "^5.1.17",
     "react": "^18.3.1",
     "react-aria-components": "^1.4.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router": "^7.0.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@cloudflare/workers-types": "^4.20241018.0",
-    "@remix-run/dev": "^2.15.0",
-    "@remix-run/route-config": "^2.15.0",
+    "@react-router/dev": "^7.0.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vanilla-extract/vite-plugin": "^4.0.17",

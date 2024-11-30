@@ -1,10 +1,6 @@
-import {
-  type MetaFunction,
-  type LoaderArgs,
-  type AppLoadContext,
-  defer,
-} from "@remix-run/cloudflare";
-import { Await, useLoaderData } from "@remix-run/react";
+import type { MetaFunction, AppLoadContext } from "react-router";
+import type { Route } from "./+types/route";
+import { Await, useLoaderData } from "react-router";
 import { Suspense } from "react";
 
 import { Client } from "~/utils/notion";
@@ -24,7 +20,7 @@ export const meta: MetaFunction = () => {
   return [{ title: "Blog - hiz" }, { name: "description", content: "Blog" }];
 };
 
-export async function loader({ context, request }: LoaderArgs) {
+export async function loader({ context, request }: Route.LoaderArgs) {
   const cache = new Cache<Data>(request, context.caches);
   const cacheMatch = await cache.get();
 
@@ -35,7 +31,7 @@ export async function loader({ context, request }: LoaderArgs) {
   const data = genFeedItems(context);
   context.ctx.waitUntil(setCache(data, cache));
 
-  return defer({ data });
+  return { data };
 }
 
 async function setCache(data: Promise<Post[]>, cache: Cache<Data>) {

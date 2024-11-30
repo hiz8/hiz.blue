@@ -1,9 +1,4 @@
-import {
-  type RouteConfig,
-  route,
-  layout,
-  index,
-} from "@remix-run/route-config";
+import { type RouteConfig, route, layout, index } from "@react-router/dev/routes";
 
 export default [
   layout("routes/_landing/route.tsx", [
