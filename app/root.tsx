@@ -1,5 +1,12 @@
 import type { LinksFunction } from "react-router";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useNavigate } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useNavigate,
+} from "react-router";
 import { RouterProvider } from "react-aria-components";
 
 import * as styles from "./root.css";
