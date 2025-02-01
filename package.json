@@ -27,9 +27,9 @@
     "@react-router/dev": "^7.1.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@vanilla-extract/vite-plugin": "^4.0.17",
+    "@vanilla-extract/vite-plugin": "^5.0.0",
     "typescript": "^5.6.3",
-    "vite": "^5.4.11",
+    "vite": "^6.0.11",
     "vite-tsconfig-paths": "^5.1.4",
     "wrangler": "^3.93.0"
   },
