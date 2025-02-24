@@ -2,13 +2,11 @@ import type { MetaFunction, AppLoadContext } from "react-router";
 import type { Route } from "./+types";
 import { Await, useLoaderData } from "react-router";
 import { Suspense } from "react";
+import { Headline, Icon, Placeholder, PlaceholderLine } from "@hiz8/blue-ui";
 
 import { Client } from "~/utils/notion";
 import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
-import { Headline } from "~/components/headline";
-import { Icon } from "~/components/icon";
-import { Placeholder, PlaceholderLine } from "~/components/placeholder";
 import { Card } from "./card";
 import * as styles from "./index.css";
 
