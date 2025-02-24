@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
 import { Link, TooltipTrigger } from "react-aria-components";
+import { Icon, Tooltip } from "@hiz8/blue-ui";
 
-import { Icon } from "~/components/icon";
-import { Tooltip } from "~/components/tooltip";
 import * as styles from "./app-nav.css";
 
 export function AppNav() {

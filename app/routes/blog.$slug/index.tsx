@@ -3,11 +3,11 @@ import type { Route } from "./+types";
 import { useLoaderData, Await, Link } from "react-router";
 import { Render } from "@9gustin/react-notion-render";
 import { Suspense } from "react";
+import { Placeholder, PlaceholderLine } from "@hiz8/blue-ui";
 
 import { Client, type Blocks } from "~/utils/notion";
 import { postFromNotionResponse, type Post } from "~/utils/post-from-notion";
 import { Cache } from "~/utils/cache";
-import { Placeholder, PlaceholderLine } from "~/components/placeholder";
 
 import * as styles from "./index.css";
 
@@ -54,7 +54,7 @@ export async function loader({ params, context, request }: Route.LoaderArgs) {
   const client = new Client(context.env.NOTION_API_KEY);
   const data = await client.getDatabaseBySlug(
     context.env.NOTION_DATABASE_ID,
-    slug,
+    slug
   );
 
   const post = postFromNotionResponse(data);
@@ -70,7 +70,7 @@ async function setCache(
     post: Post;
     blocks: Promise<Blocks>;
   },
-  cache: Cache<Data>,
+  cache: Cache<Data>
 ) {
   const res = await data.blocks;
   await cache.set({ post: data.post, blocks: res });

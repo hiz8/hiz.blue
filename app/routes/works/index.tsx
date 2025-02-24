@@ -1,7 +1,6 @@
 import type { MetaFunction } from "react-router";
+import { Headline, Icon } from "@hiz8/blue-ui";
 
-import { Headline } from "~/components/headline";
-import { Icon } from "~/components/icon";
 import { Card } from "./card";
 
 import * as styles from "./index.css";

@@ -1,6 +1,6 @@
 import { Link } from "react-aria-components";
+import { Icon } from "@hiz8/blue-ui";
 
-import { Icon } from "~/components/icon";
 import * as styles from "./card.css";
 
 const imageSize = 44;
